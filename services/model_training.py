@@ -21,6 +21,7 @@ from joblib import (
     dump
 )
 from services.abstract_service import AbstractService
+from loguru import logger
 
 class ModelTraining(AbstractService):
     def __init__(self, *args, **kwargs):
@@ -86,8 +87,13 @@ class ModelTraining(AbstractService):
                     CountVectorizer()
                 )
 
-            nltk.download('stopwords')
-            nltk.download('punkt_tab')
+            try:
+                nltk.download('stopwords')
+                nltk.download('punkt_tab')
+            except:
+                logger.warning(
+                    'Application can\'t connection to NLTK server and download \'stopwords\' and \'punkt_tab\' packages.'
+                )
 
             df['cleaned_human_description'] = df['human_description'].apply(self._preprocess_text)
             df['cleaned_celebration'] = df['celebration'].apply(self._preprocess_text)
