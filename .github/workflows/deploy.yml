@@ -1,0 +1,19 @@
+name: CICD
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.HOST_NAME }}
+          username: ${{ secrets.USER_NAME }}
+          password: ${{ secrets.PASS_WORD }}
+          script: |
+            sudo docker stack remove present2
+            sudo docker stack deploy -c stack.yml present2

@@ -1,0 +1,9 @@
+nltk
+steamlit
+pandas
+numpy
+loguru
+click
+scikit-learn
+joblib
+python-dotenv
