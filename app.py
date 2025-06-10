@@ -20,7 +20,7 @@ celebration = st.radio(
     options=('New Year', 'Birthday', 'Wedding', 'Christmas', 'Other')
 )
 
-if st.button('Get prediction'):
+if st.button('Get prediction') and all((human_description, celebration)):
     load_dotenv()
 
     model_filename = getenv('MODEL_FILENAME')
