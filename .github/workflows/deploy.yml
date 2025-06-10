@@ -15,5 +15,4 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASS_WORD }}
           script: |
-            sudo docker stack remove present2
-            sudo docker stack deploy -c stack.yml present2
+            sudo docker service update --image=${{ IMAGE_NAME }} ${{ SERVICE_NAME }}
