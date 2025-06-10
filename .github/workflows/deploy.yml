@@ -15,4 +15,4 @@ jobs:
           username: ${{ secrets.USER_NAME }}
           password: ${{ secrets.PASS_WORD }}
           script: |
-            sudo docker service update --image=${{ IMAGE_NAME }} ${{ SERVICE_NAME }}
+            sudo docker service update --image=${{ secrets.IMAGE_NAME }} ${{ secrets.SERVICE_NAME }}
